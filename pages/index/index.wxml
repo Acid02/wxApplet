@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view>
+   <view class="item-app">
+     <input type="text" value='{{inputValue}}' confirm-type='send' class="txtinput" placeholder="请粘贴视频地址" bindinput="bindKeyInput"/>
+     <button class="button-item" type="default" plain="true" bindtap='tap'>提取</button>
+   </view>
+   
+   <view class="media-list" wx:if="{{media.video}}">
+      <view class="progress" hidden='{{progres=="0"}}'>
+        <view class="progress-des">
+          <view style="width:{{progres}}%;"></view>
+        </view>
+        <text class="progress-txt">{{progres}}%</text>
+      </view>
+      <view class="media-video">
+        <video poster="{{media.cover}}" src="{{media.video}}"></video>
+        <button bindtap="downloadFile" data-type='video' data-src='{{media.video}}' >保存视频</button>
+      </view>
+      <view class="media-cover">
+        <image src="{{media.cover}}" mode='widthFix'></image>
+        <button bindtap="downloadFile" data-type='image' data-src='{{media.cover}}'>保存封面</button>
+      </view>
+      <view class="media-audio">
+        <image src="{{!isPlayingMusic?'../../static/audio/play.png':'../../static/audio/pause.png'}}" mode='aspectFit' bindtap="handleAudio"></image>
+        <button bindtap="downloadFile" data-type='audio' data-src='{{media.audio}}'>复制音乐链接</button>
+      </view>
+   </view>
+</view>
