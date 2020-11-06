@@ -55,6 +55,7 @@ Page({
     if(httpString(inputValue)){
      let params = {url:httpString(inputValue)}
      let result = await getVideowm({params});
+     console.log(result)
      if(result.code == 200){
       this.setData({ media:result});
       wx.hideLoading()
@@ -97,7 +98,11 @@ Page({
    let {src:url,type} = e.target.dataset;
 
    let handsPost = await this.savePoster()
-   
+   //http转https
+   if(!url.includes('https')){
+      url = url.replace('http','https');
+   }
+
    wx.showLoading({title: '保存中...',mask: true})
 
    if(handsPost){

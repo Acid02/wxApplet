@@ -57,6 +57,10 @@
 }
 
 .progress{
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 99;
   width: 100%;
   display: flex;
   align-items: center;
